@@ -28,18 +28,21 @@
       </li>
     </ul>
     
-    <form class="form-inline my-2 my-lg-0">
-    <a class="nav-item nav-link" href="<%=new_user_registration_path %>">Créer un profil</a>
-    </form>
-    <form class="form-inline my-2 my-lg-0">
-    <a class="nav-item nav-link" href="<%=new_user_session_path%>">Se connecter</a>
-    </form>
-    <form class="form-inline my-2 my-lg-0">
-    <a class="nav-item nav-link" href=<%="#" %>>Mon profil</a>
-    </form>
-    <form class="form-inline my-2 my-lg-0">
-    <a class="nav-item nav-link" href=<%="#" %> data-method="DELETE">Se déconnecter</a>
-    </form>
+    <% if user_signed_in? %>
+        <form class="form-inline my-2 my-lg-0">
+        <a class="nav-item nav-link" href="<%=user_path(current_user.id) %>">Mon profil</a>
+        </form>
+        <form class="form-inline my-2 my-lg-0">
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        </form>
+    <% else %> 
+        <form class="form-inline my-2 my-lg-0">
+        <a class="nav-item nav-link" href="<%=new_user_registration_path %>">Créer un profil</a>
+        </form>
+        <form class="form-inline my-2 my-lg-0">
+        <a class="nav-item nav-link" href="<%=new_user_session_path%>">Se connecter</a>
+        </form>
+    <% end %>
     
   </div>
 </nav>
