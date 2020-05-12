@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Page de profil</h1>
+         <div class="form-group">
+          <p> Prénom : <%= @user.first_name %> </p><br />
+          <p> Nom : <%= @user.last_name %> </p><br />
+          <p> Description : <%= @user.description%> </p><br />
+          <p> Email : <%= @user.email%> </p><br />
+        </div>
+        
+        <%= link_to "Edit email / password", edit_user_registration_path %>
+     </div>
+  </div>
+</div>

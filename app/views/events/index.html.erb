@@ -1,0 +1,27 @@
+<div class="container">
+
+    <h1 class="display-6 text-center my-3">Page d accueil</h1>
+
+    <div class="row">
+ 
+       <% Event.all.each do |event| %>
+    
+            <div class="col-4 mb-3">
+                <div class="card">
+                
+                    <div class="card-body">
+                        <h5 class="card-title"><%=event.title %></h5>
+                        <p class="card-text"><%= truncate event.description, length: 30 %></p>
+                        <p class="card-text">
+                        <small class="text-muted">
+                        organisé par X le <%=event.start_date %> à <%=event.location%>
+                        </small> <br>
+                        <small class="text-muted"> Prix: <%=event.price%> € </small>
+                        </p>
+                    </div>
+                
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
