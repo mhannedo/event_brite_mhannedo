@@ -8,10 +8,13 @@
 
 require 'faker'
 
-User.destroy_all
+Event.destroy_all
+Attendance.destroy_all
+
 
 5.times do |index|
-    user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: "mhannedo#{index}@yopmail.com")
+    event = Event.create(start_date: Faker::Date.forward(days: 350),duration: Faker::Number.between(from: 1, to: 10),title: Faker::String.random(length: 5..10),description: Faker::String.random(length: 20..25),price:"150",location: Faker::Address.city ,administrator: User.find(rand(23..24)))
+    attendance = Attendance.create(participant: User.find(rand(23..24)),event: event)
 end
 
 
